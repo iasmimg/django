@@ -13,3 +13,5 @@ class Curso(models.Model):
     vagas = models.IntegerField('Vagas')
     area = models.ForeignKey(Area, on_delete=models.PROTECT)
     publicos = models.ManyToManyField(Publico)
+
+    
