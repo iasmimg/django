@@ -13,13 +13,18 @@
     <p><a href="{% url 'cadastrar_acao' %}">Cadastrar</a></p>
     <p>Listagem de Ações:</p>
     {% for acao in todas_acoes %}
+    <div>
+
     <p>Título: {{acao.titulo}}</p>
     <p>Descrição: {{acao.descricao}}</p>
     <p>Autor: {{acao.autor}}</p>
     <p>Tipo: {{acao.tipo}}</p>
-    <p>Imagem: {{acao.imagem}}</p>
+    <p>Imagem: <img src='media/{{acao.imagem}}' alt='' /></p>
     <p>Link Geral: {{acao.linkgeral}}</p>
     <p>Link Mídia Social: {{acao.linkms}}</p>
+    <p><a href="{% url 'editar_acao' acao.id %}">EDITAR</a></p>
+    
+    </div>
     {% empty %}
     <p>Não existe nenuma ação cadastrada </p>
     {% endfor %}

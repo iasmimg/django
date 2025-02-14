@@ -10,7 +10,7 @@
 </head>
 <body>
     <h1>Cadastrar Ação</h1>
-    <form method="POST" >
+    <form method="POST" enctype="multipart/form-data" >
         {% csrf_token %}
         {{ form_acao }}
         <p><input type="submit" value="Cadastrar"></p>

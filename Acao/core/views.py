@@ -10,7 +10,7 @@ def listar_acao(request):
     return render(request, 'acao.html', contexto)
 
 def cadastrar_acao(request):
-    form = AcaoForm(request.POST or None)
+    form = AcaoForm(request.POST or None, request.FILES or None)
 
     if form.is_valid():
         form.save()
@@ -23,14 +23,15 @@ def cadastrar_acao(request):
 
 def editar_acao(request, id):
     acao = Acao.objects.get(pk=id)
-    form = AcaoForm(request.POST or None, instance=acao)
+
+    form = AcaoForm(request.POST or None,  request.FILES or None ,instance=acao)
 
     if form.is_valid():
         form.save()
-        return redirect('listar_cursos')
+        return redirect('listar_acao')
 
     contexto = {
-        'form_acao', form
+        'form_acao': form
     }
 
-    return render(request, 'acao_cadastrar.html')
+    return render(request, 'acao_cadastrar.html', contexto)
